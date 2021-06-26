@@ -2,9 +2,9 @@ from os import path
 import PIL.Image
 ASCII_CHARS = ['@', '#', 'S', '%', '?', '*', '+', ';', ':', ',', '.']
 
-def resize_image(image, new_width=100):
+def resize_image(image, new_width=50):
     width, heigth = image.size
-    ratio = heigth/width
+    ratio = heigth/width/1.5
     new_height = int(new_width*ratio)
     resized_image = image.resize((new_width, new_height))
     ##print('New w= {}, new h = {}', new_width, new_height)
@@ -19,7 +19,7 @@ def pixels_to_ascii(image):
     characters = "".join([ASCII_CHARS[pixel//25] for pixel in pixels])
     return(characters)
 
-def main (new_width=100):
+def main (new_width=50):
     path = input('Enter a valid path name to an image:\n ')
     try:
         image = PIL.Image.open(path)
@@ -33,5 +33,7 @@ def main (new_width=100):
     ascii_image = '\n'.join(new_image_data[i:(i+new_width)] for i in range(0, pixel_count, new_width))
     
     print(ascii_image)
-
+    
+    with open('ascii_image.txt', 'w') as f:
+        f.write(ascii_image)
 main()
