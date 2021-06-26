@@ -2,6 +2,7 @@ from os import path
 import PIL.Image
 import sys
 ASCII_CHARS = ['@', '#', 'S', '%', '?', '*', '+', ';', ':', ',', '.']
+ASCII_CHAR_TRANSPARENT = '.'
 
 def resize_image(image, new_width=100):
     width, heigth = image.size
@@ -13,12 +14,14 @@ def resize_image(image, new_width=100):
     return(resized_image)
 
 def grayfy(image):
-    grayscale_image = image.convert("L")
+    grayscale_image = image.convert("LA")
     return(grayscale_image)
 
 def pixels_to_ascii(image):
-    pixels = image.getdata()
-    characters = "".join([ASCII_CHARS[pixel//25] for pixel in pixels])
+    gray_pixels = image.getdata(0)
+    alpha_pixels = image.getdata(1)
+    pixel_count = len(gray_pixels)
+    characters = "".join([(ASCII_CHAR_TRANSPARENT if alpha_pixels[i] == 0 else ASCII_CHARS[gray_pixels[i]//25]) for i in range(pixel_count)])
     return(characters)
 
 def main (new_width=100):
