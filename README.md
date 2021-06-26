@@ -61,4 +61,4 @@ An exemple of ASCII art is (we recommend copying and pasting the following chara
 ..................................................
 
 Base image for prior art:
-[link](https://github.com/gomesGabriel/ascii_art/blob/main/g.jpg)
+![Alt text](https://github.com/gomesGabriel/ascii_art/blob/main/g.jpg)
