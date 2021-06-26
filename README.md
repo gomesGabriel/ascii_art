@@ -37,4 +37,5 @@ An exemple of ASCII art is (we recommend copying and pasting the following chara
 ![Alt text](https://github.com/gomesGabriel/ascii_art/blob/main/g_ascii.jpg)
 
 Base image for prior art:
+
 ![Alt text](https://github.com/gomesGabriel/ascii_art/blob/main/g.jpg)
